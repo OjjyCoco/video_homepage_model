@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestJS</title>
+    <link rel="stylesheet" href="testJS.css" />
+    <link rel="stylesheet" media="screen and (min-width: 900px)" href="testJSpc.css" />
+</head>
+<body>
+    <div id="div">
+        <h1>WORLDSURFERS</h1>
+        <p>REJOIGNEZ L'AVENTURE</p>
+        <video src="sandsurfing.mp4" autoplay loop muted></video>
+        <nav>
+            <i class="fas fa-bars" id="list_icon"></i>
+            <div id="move">
+                <i class="fas fa-home"></i>
+                <i class="fas fa-users"></i>
+                <i class="far fa-share-square"></i>
+                <i class="fas fa-cogs"></i>
+            </div>
+        </nav>
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <div id="div2">
+        <i class="fas fa-arrow-down"></i>
+        <div>
+            <div id="icon"></div>
+            <h1 id="devalez">DÉVALEZ LES MONTAGNES</br>INCONNUES</h1>
+        </div>
+        <div id="wrapper_img">
+            <div id="drop"></div>
+            <img src="image.jpg" id="img">
+        </div>
+        <div id="text">
+            <h1>L'Éxperience</h1>
+            <p>Cette maquette est modifiable à volonté ! Vous pouvez aussi rajouter du contenu à colonté ! D'autres pages, une barre de navigation dynamique, des photos qui viennent de partout, des catégories qui s'affichent, qui translatent etc... </br>Voici le texte que vous désirez mettre à cette place par exemple...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...Le texte que vous désirez...</p>
+            <div id="button">S'inscrire</div>
+        </div>
+    </div>
+    
+</body>
+    
+<script>
+    const div2 = document.getElementById("div2")
+    const drop = document.getElementById("drop")
+    const arrow_down = document.querySelector("#div2 i")
+    const img = document.getElementById("img")
+    const chevron = document.querySelector("#div > i")
+    const list_icon = document.getElementById("list_icon")
+    let nav_i = document.querySelectorAll("nav #move i")
+    let largeur_fenêtre = window.innerWidth;
+    let hauteur_fenêtre = window.innerHeight;
+    // div2.style.transform = "translateY(0)"
+    // if(div2.style.transform === "translateY(0px)"){
+    //     setTimeout(() => {
+    //         div2.style.transform = "translateY(-100%)"
+    //     }, 15000)
+    // }
+
+    if(largeur_fenêtre > 900){
+        icons_onclick()
+        nav_icon_appear()
+    }
+    else if(largeur_fenêtre < 900){
+        nav_icon_appear()
+    }
+
+    
+
+    function nav_icon_appear(){
+        for(i of nav_i){
+            i.style.transform = "translate(-145%)"
+        }
+        list_icon.addEventListener("click", () => {
+            let nav_i_length = nav_i.length
+            if(nav_i[2].style.transform == "translate(-145%)"){ // 2 au hasard
+                for(let i = 0; i < nav_i_length; i++){
+                    setTimeout(function(){
+                        nav_i[i].style.transform = "translate(0%)"
+                    }, i*100)
+                }
+            }
+            else{
+                for(let i = 0; i < nav_i_length; i++){
+                    setTimeout(function(){
+                        nav_i[i].style.transform = "translate(-145%)"
+                    }, i*100)
+                }
+            }
+        })
+    }
+
+    function ouverture_photo(){
+        drop.style.animation = "drop 0.8s 1s ease-out both"
+    }
+
+    function icons_onclick(){
+        window.addEventListener("wheel", () => {
+        // window.scrollBy(0,200)
+        div2.style.transform = "translateY(-100%)"
+        ouverture_photo()
+        })
+
+        chevron.addEventListener("click", () => {
+        div2.style.transform = "translateY(-100%)"
+        ouverture_photo()
+        })
+
+        arrow_down.addEventListener("click", () => {
+        div2.style.transform = "translateY(0)"
+        })
+    }
+</script>
+<script src="https://kit.fontawesome.com/7827c1e29f.js" crossorigin="anonymous"></script>
+</html>
